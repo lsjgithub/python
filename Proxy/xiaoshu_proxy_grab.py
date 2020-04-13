@@ -3,16 +3,23 @@ import chardet
 import re
 import _thread
 import time
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 xs_url = "http://www.xsdaili.com"
-
+dest_url = "https://www.usatoday.com/"
+header = {"user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) \
+    AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"}
 
 def check_proxy(type, ip_port):
-    my_request = urllib.request
-    my_request.ProxyHandler({type: ip_port})
+    proxy_support = urllib.request.ProxyHandler({type: ip_port})
+    opener = urllib.request.build_opener(proxy_support)
+    request = urllib.request.Request(dest_url, headers=header)
+
     try:
         time_before = time.time()
-        page = my_request.urlopen('https://www.usatoday.com')
+        page = opener.open(request)
         page_html = page.read()
 
         if page.status == 200:
@@ -66,11 +73,6 @@ def get_one_month(month_url):
 
 
 if __name__ == "__main__":
-    headers = ("user-agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) \
-    AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36")
-    opener = urllib.request.build_opener()
-    opener.addheaders = [headers]
-
     page = urllib.request.urlopen(xs_url)
     page_html = page.read()
 
