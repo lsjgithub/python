@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{fa8a1553-2472-423f-ad64-1cd1336f88c1}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>Proxy\xiaoshu_proxy_grab.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="crawler\pageCode.txt" />
+    <Content Include="Proxy\pageCode.txt" />
+    <Content Include="Proxy\proxy_file.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="crawler\pic_from_like8.xyz.py" />
+    <Compile Include="crawler\pic_from_meituba.py" />
+    <Compile Include="opencv\opencv_grab.py" />
+    <Compile Include="Proxy\httpproxy.py" />
+    <Compile Include="Proxy\ProxyCheck\proxy.py" />
+    <Compile Include="Proxy\ProxyCheck\socks.py" />
+    <Compile Include="Proxy\ProxySqlite.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Proxy\proxy_test.py" />
+    <Compile Include="Proxy\xiaoshu_proxy_grab.py" />
+    <Compile Include="Proxy\_init_.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="refresh_ticket\refresh_ticket.py" />
+    <Compile Include="turtle\Tree.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="crawler" />
+    <Folder Include="opencv" />
+    <Folder Include="Proxy" />
+    <Folder Include="Proxy\ProxyCheck\" />
+    <Folder Include="refresh_ticket" />
+    <Folder Include="turtle" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="venv\">
+      <Id>venv</Id>
+      <Description>venv (Python 3.8 (32-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <Version>0.0</Version>
+      <Architecture>X86</Architecture>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
